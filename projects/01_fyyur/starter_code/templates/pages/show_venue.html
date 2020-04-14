@@ -75,5 +75,35 @@
 	</div>
 </section>
 
+<button data-id="{{ venue.id }}" class="edit-button btn btn-warning btn-lg">Edit venue</button>
+<button id="delete-venue" data-id="{{ venue.id }}" class="delete-button btn btn-danger btn-lg">Delete venue</button>
+
+<script>
+	const deleteBtn = document.getElementById('delete-venue');
+	deleteBtn.onclick = function(e) {
+		const venueId = e.target.dataset['id'];
+		fetch('/venues/' + venueId, {
+			method:'DELETE'
+		})
+		.then(function() {
+			window.location.href = '/venues';
+		})
+		.catch(function(e) {
+			console.log('error', e)
+		})
+	}
+
+	// edit venue button logic
+	const editButton = document.querySelector('.edit-button');
+	editButton.onclick = function(e) {
+		const editItemId = e.target.dataset['id'];
+		location.href = '/venues/' + editItemId + '/edit'
+	}
+
+</script>
+
+
+
+
 {% endblock %}
 

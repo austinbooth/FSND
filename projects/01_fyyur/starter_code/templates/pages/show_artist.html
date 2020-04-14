@@ -72,5 +72,16 @@
 	</div>
 </section>
 
+<button data-id="{{ artist.id }}" class="edit-button btn btn-warning btn-lg">Edit artist</button>
+
+<script>
+	// edit artist button logic
+	const editButton = document.querySelector('.edit-button');
+	editButton.onclick = function(e) {
+		const editItemId = e.target.dataset['id'];
+		location.href = '/artists/' + editItemId + '/edit'
+	}
+</script>
+
 {% endblock %}
 
